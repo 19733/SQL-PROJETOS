@@ -1,0 +1,207 @@
+CREATE TABLE [TABELA DE VENDEDORES](
+
+MATRICULA VARCHAR (5) NOT NULL PRIMARY KEY,
+NOME VARCHAR (100),
+[PERCENTUAL DE COMISSAO] FLOAT,
+[DATA VENDA] DATE,
+QUANTIDADE INT
+);
+
+CREATE TABLE VENDAS (
+    ID_VENDA INT NOT NULL PRIMARY KEY,
+    CPF VARCHAR(11),
+    [CODIGO DO PRODUTO] INT,
+    MATRICULA INT,
+    [DATA VENDA] DATE,
+    QUANTIDADE INT
+);
+
+ALTER TABLE VENDAS
+ALTER COLUMN MATRICULA VARCHAR(5);
+
+CREATE TABLE [TABELA DE PRODUTO](
+
+[CODIGO DO PRODUTO] [VARCHAR] (20) NOT NULL PRIMARY KEY,
+[NOME DO PRODUTO] [VARCHAR] (50), 
+EMBALAGEM [VARCHAR] (50),
+TAMANHO [VARCHAR] (50),
+SABOR [VARCHAR] (50),
+[PRECO DA LISTA] [SMALLMONEY],
+QUANTIDADE INT
+);
+
+CREATE TABLE [TABELA DE CLIENTES](
+
+[CPF] [CHAR] (11) NOT NULL PRIMARY KEY,
+[NOME] [VARCHAR] (50),
+[RUA] [VARCHAR] (50),
+[COMPLEMENTO] [VARCHAR] (50),
+[BAIRRO] [VARCHAR] (50),
+[ESTADO] [CHAR] (2),
+[CEP] [CHAR] (8),
+[DATA DE NASCIMENTO] [DATE], 
+[IDADE] [SMALLINT], 
+[SEXO] [CHAR] (1),
+[LIMITE DE CREDITO] [MONEY], 
+[VOLUME MINIMO] [FLOAT],
+[PRIMEIRA COMPRA] [BIT]
+
+);
+
+INSERT INTO [TABELA DE VENDEDORES] VALUES 
+
+('001', 'João Silva', 5.0, '2024-01-15', 10),
+('002', 'Maria Santos', 7.5, '2024-01-16', 8),
+('003', 'Pedro Almeida', 6.0, '2024-01-16', 15),
+('004', 'Ana Costa', 8.0, '2024-01-18', 12),
+('005', 'Carlos Oliveira', 5.5, '2024-01-19', 20),
+('006', 'Juliana Pereira', 7.0, '2024-01-20', 6),
+('007', 'Fernando Lima', 6.5, '2024-01-21', 18),
+('008', 'Patrícia Rocha', 8.5, '2024-01-22', 9),
+('009', 'Ricardo Martins', 5.0, '2024-01-23', 14),
+('010', 'Amanda Ferreira', 7.0, '2024-01-25', 11);
+
+INSERT INTO VENDAS VALUES
+
+(1, '12345678901', 1001, '001', '2024-01-15', 10),
+(2, '23456789012', 1002, '001', '2024-01-15', 5),
+(3, '34567890123', 1003, '002', '2024-01-16', 8),
+(4, '45678901234', 1004, '002', '2024-01-16', 7),
+(5, '56789012345', 1005, '003', '2024-01-17', 15),
+(6, '67890123456', 1006, '003', '2024-01-17', 10),
+(7, '78901234567', 1007, '004', '2024-01-18', 12),
+(8, '89012345678', 1008, '004', '2024-01-18', 6),
+(9, '90123456789', 1009, '005', '2024-01-19', 20),
+(10, '01234567890', 1010, '005', '2024-01-19', 15),
+(11, '11223344556', 1011, '006', '2024-01-20', 6),
+(12, '22334455667', 1012, '006', '2024-01-20', 4),
+(13, '33445566778', 1013, '007', '2024-01-21', 18),
+(14, '44556677889', 1014, '007', '2024-01-21', 9),
+(15, '55667788990', 1015, '008', '2024-01-22', 9),
+(16, '66778899001', 1016, '008', '2024-01-22', 7),
+(17, '77889900112', 1017, '009', '2024-01-23', 14),
+(18, '88990011223', 1018, '009', '2024-01-23', 8),
+(19, '99001112234', 1019, '010', '2024-01-24', 11),
+(20, '00112233445', 1020, '010', '2024-01-24', 6);
+
+INSERT INTO [TABELA DE PRODUTO] VALUES
+
+('1001', 'Refrigerante Cola', 'Garrafa', '2L', 'Cola', 8.50, 100),
+('1002', 'Refrigerante Cola', 'Lata', '350ml', 'Cola', 4.50, 200),
+('1003', 'Suco de Laranja', 'Caixa', '1L', 'Laranja', 7.80, 80),
+('1004', 'Suco de Uva', 'Garrafa', '1,5L', 'Uva', 9.20, 60),
+('1005', 'Água Mineral', 'Garrafa', '500ml', 'Natural', 2.50, 150),
+('1006', 'Água com Gás', 'Garrafa', '500ml', 'Natural', 3.00, 120),
+('1007', 'Chá Verde', 'Garrafa', '1L', 'Limão', 6.90, 90),
+('1008', 'Chá de Pêssego', 'Lata', '350ml', 'Pêssego', 5.20, 110),
+('1009', 'Energético', 'Lata', '250ml', 'Original', 8.90, 70),
+('1010', 'Energético', 'Garrafa', '473ml', 'Original', 12.50, 50),
+('1011', 'Refrigerante Limão', 'Garrafa', '2L', 'Limão', 8.20, 85),
+('1012', 'Refrigerante Limão', 'Lata', '350ml', 'Limão', 4.20, 180),
+('1013', 'Suco de Manga', 'Caixa', '1L', 'Manga', 8.50, 65),
+('1014', 'Suco de Maracujá', 'Garrafa', '1,5L', 'Maracujá', 9.80, 55),
+('1015', 'Água Mineral', 'Garrafa', '1L', 'Natural', 3.50, 130),
+('1016', 'Água com Gás', 'Garrafa', '1L', 'Natural', 4.50, 100),
+('1017', 'Chá de Hortelã', 'Garrafa', '1L', 'Hortelã', 7.20, 75),
+('1018', 'Chá de Frutas Vermelhas', 'Lata', '350ml', 'Frutas Vermelhas', 5.80, 95),
+('1019', 'Energético', 'Lata', '250ml', 'Açaí', 9.20, 60),
+('1020', 'Refrigerante Laranja', 'Garrafa', '2L', 'Laranja', 8.00, 95);
+
+INSERT INTO [TABELA DE CLIENTES] VALUES
+
+('12345678901', 'João da Silva', 'Rua das Flores', 'Casa 123', 'Centro', 'SP', '01234567', '1985-03-15', 38, 'M', 5000.00, 50.0, 0),
+('23456789012', 'Maria Oliveira', 'Av. Paulista', 'Apto 456', 'Bela Vista', 'SP', '01334567', '1990-07-22', 33, 'F', 8000.00, 30.0, 0),
+('34567890123', 'Pedro Santos', 'Rua XV de Novembro', 'Sala 789', 'Centro', 'RJ', '20040030', '1982-11-30', 41, 'M', 3000.00, 40.0, 1),
+('45678901234', 'Ana Costa', 'Rua Augusta', 'Loja 101', 'Consolação', 'SP', '01305000', '1995-05-14', 28, 'F', 6000.00, 25.0, 0),
+('56789012345', 'Carlos Pereira', 'Av. Brasil', 'Galpão 202', 'Jardim América', 'MG', '30456789', '1978-12-03', 45, 'M', 10000.00, 100.0, 0),
+('67890123456', 'Juliana Almeida', 'Rua da Praia', 'Casa 303', 'Copacabana', 'RJ', '22021011', '1988-09-18', 35, 'F', 4500.00, 35.0, 1),
+('78901234567', 'Fernando Lima', 'Av. Getúlio Vargas', 'Apto 404', 'Funcionários', 'MG', '30112000', '1992-02-28', 31, 'M', 3500.00, 45.0, 0),
+('89012345678', 'Patrícia Rocha', 'Rua das Palmeiras', 'Casa 505', 'Jardins', 'SP', '01452000', '1987-06-12', 36, 'F', 7000.00, 60.0, 0),
+('90123456789', 'Ricardo Martins', 'Av. Afonso Pena', 'Sala 606', 'Centro', 'MG', '30130007', '1975-08-25', 48, 'M', 9000.00, 70.0, 1),
+('01234567890', 'Amanda Ferreira', 'Rua Oscar Freire', 'Loja 707', 'Cerqueira César', 'SP', '01426000', '1993-04-07', 30, 'F', 5500.00, 55.0, 0),
+('11223344556', 'Roberto Nunes', 'Av. Presidente Vargas', 'Apto 808', 'Centro', 'RJ', '20071004', '1980-01-20', 43, 'M', 4000.00, 65.0, 0),
+('22334455667', 'Cristina Dias', 'Rua da Consolação', 'Casa 909', 'Consolação', 'SP', '01302000', '1991-10-15', 32, 'F', 6500.00, 75.0, 1),
+('33445566778', 'Paulo Carvalho', 'Av. Contorno', 'Galpão 1010', 'Savassi', 'MG', '30110090', '1973-03-08', 50, 'M', 12000.00, 80.0, 0),
+('44556677889', 'Vanessa Souza', 'Rua do Catete', 'Apto 1111', 'Catete', 'RJ', '22220000', '1986-12-24', 37, 'F', 4800.00, 40.0, 0),
+('55667788990', 'Marcos Oliveira', 'Av. Brigadeiro Faria Lima', 'Sala 1212', 'Itaim Bibi', 'SP', '01451000', '1984-07-19', 39, 'M', 8500.00, 90.0, 1),
+('66778899001', 'Luciana Santos', 'Rua do Ouvidor', 'Loja 1313', 'Centro', 'RJ', '20040030', '1994-02-11', 29, 'F', 5200.00, 30.0, 0),
+('77889900112', 'Eduardo Costa', 'Av. Amazonas', 'Apto 1414', 'Centro', 'MG', '30180000', '1979-05-30', 44, 'M', 9500.00, 85.0, 0),
+('88990011223', 'Sandra Pereira', 'Rua Haddock Lobo', 'Casa 1515', 'Cerqueira César', 'SP', '01414000', '1983-08-14', 40, 'F', 7200.00, 95.0, 1),
+('99001112234', 'Antônio Almeida', 'Av. Nossa Senhora de Copacabana', 'Apto 1616', 'Copacabana', 'RJ', '22011011', '1976-11-05', 47, 'M', 3800.00, 50.0, 0),
+('00112233445', 'Tânia Ferreira', 'Rua Bela Cintra', 'Sala 1717', 'Consolação', 'SP', '01415000', '1989-06-28', 34, 'F', 6800.00, 45.0, 0);
+
+SELECT
+    [TABELA DE CLIENTES].NOME AS [Nome Cliente],
+    [TABELA DE VENDEDORES].NOME AS [Nome Vendedor],
+    [TABELA DE PRODUTO].[NOME DO PRODUTO] AS Produto,
+    VENDAS.QUANTIDADE,
+    VENDAS.[DATA VENDA]
+FROM VENDAS
+INNER JOIN [TABELA DE CLIENTES] ON VENDAS.CPF = [TABELA DE CLIENTES].CPF
+INNER JOIN [TABELA DE PRODUTO] ON VENDAS.[CODIGO DO PRODUTO] = [TABELA DE PRODUTO].[CODIGO DO PRODUTO]
+INNER JOIN [TABELA DE VENDEDORES] ON VENDAS.MATRICULA = [TABELA DE VENDEDORES].MATRICULA
+ORDER BY QUANTIDADE DESC;
+
+SELECT --DISTINCT
+	[TABELA DE CLIENTES].NOME AS [NOME DE CLIENTE],
+	[TABELA DE VENDEDORES].NOME AS [NOME DE VENDEDOR],
+	[TABELA DE PRODUTO].[NOME DO PRODUTO] AS PRODUTO,
+	VENDAS.QUANTIDADE,
+	VENDAS.[DATA VENDA]
+FROM VENDAS
+FULL JOIN [TABELA DE CLIENTES] ON VENDAS.CPF = [TABELA DE CLIENTES].CPF
+FULL JOIN [TABELA DE PRODUTO] ON VENDAS.[CODIGO DO PRODUTO] = [TABELA DE PRODUTO].[CODIGO DO PRODUTO]
+FULL JOIN [TABELA DE VENDEDORES] ON VENDAS.MATRICULA = [TABELA DE VENDEDORES].MATRICULA;
+
+SELECT DISTINCT
+    [TABELA DE VENDEDORES].MATRICULA,
+	[TABELA DE VENDEDORES].QUANTIDADE,
+	VENDAS.QUANTIDADE AS QUANTIDADE2,
+	[TABELA DE VENDEDORES].[DATA VENDA],	
+	VENDAS.[DATA VENDA] AS [DATA DE VENDA 2]
+FROM [TABELA DE VENDEDORES]
+INNER JOIN VENDAS ON [TABELA DE VENDEDORES].MATRICULA = VENDAS.MATRICULA;
+
+SELECT DISTINCT
+	NOME,
+	[TABELA DE VENDEDORES].MATRICULA,
+	[TABELA DE VENDEDORES].QUANTIDADE,
+	[TABELA DE VENDEDORES].[DATA VENDA]
+FROM [TABELA DE VENDEDORES]
+INNER JOIN VENDAS AS VENDAS_VENDEDORES ON [TABELA DE VENDEDORES].QUANTIDADE = VENDAS_VENDEDORES.QUANTIDADE
+INNER JOIN VENDAS AS VENDAS_REGISTRO ON [TABELA DE VENDEDORES].[DATA VENDA] = VENDAS_REGISTRO.[DATA VENDA];
+
+SELECT --DISTINCT
+    [TABELA DE VENDEDORES].NOME,
+	[CODIGO DO PRODUTO],
+	[NOME DO PRODUTO],
+	[TABELA DE PRODUTO].QUANTIDADE AS QUANTIDADE_PRODUTO,
+	[TABELA DE VENDEDORES].QUANTIDADE AS QUANTIDADE_VENDEDORES
+FROM [TABELA DE PRODUTO]
+FULL JOIN [TABELA DE VENDEDORES] ON [TABELA DE PRODUTO].QUANTIDADE = [TABELA DE VENDEDORES].QUANTIDADE;
+
+SELECT 
+	[TABELA DE VENDEDORES].NOME,
+	[TABELA DE VENDEDORES].[PERCENTUAL DE COMISSAO],
+	[TABELA DE VENDEDORES].QUANTIDADE,
+	[TABELA DE PRODUTO].[NOME DO PRODUTO] 
+FROM [TABELA DE VENDEDORES]
+INNER JOIN [TABELA DE PRODUTO] ON [TABELA DE VENDEDORES].QUANTIDADE = [TABELA DE PRODUTO].QUANTIDADE;
+
+
+SELECT DISTINCT NOME FROM [TABELA DE CLIENTES]
+UNION ALL
+SELECT DISTINCT [NOME DO PRODUTO] FROM [TABELA DE PRODUTO];
+
+
+
+
+
+
+
+
+
+
+
+
+
